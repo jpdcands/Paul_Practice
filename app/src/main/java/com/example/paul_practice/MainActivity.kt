@@ -29,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     horizontalAlignment = Alignment.CenterHorizontally) {
                     Text(text = "Hello")
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = " Moosie")
+                    Text(text = " Moosie2")
                 }
 
             }
