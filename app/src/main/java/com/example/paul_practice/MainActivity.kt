@@ -5,11 +5,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.Text
@@ -18,8 +21,10 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,22 +36,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/*@Composable
-fun ExercisesScreen() {
-    // Enclose everything in a Column
-    Column {
-        // Main Title
-        Text(
-            text = "Shoulder and Rotator Cuff Exercises",
-            modifier = Modifier.padding(16.dp),
-            // Add style parameters if needed, e.g., fontSize, fontWeight
-        )
-
-        // LazyColumn for the list of exercises
-        NamesLazyColumn()
-    }
-}*/
-
 @Composable
 fun ExercisesScreen() {
     // Enclose everything in a Box
@@ -54,63 +43,89 @@ fun ExercisesScreen() {
         contentAlignment = Alignment.Center, // Aligns the content to the center
         modifier = Modifier.fillMaxSize()    // Fills the entire screen
     ) {
-        Column {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Text(
-                text = "Shoulder and Rotator \nCuff Exercises",
+                text = "Shoulder/Rotator",
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-                    .padding(16.dp),
+                    .padding(top = 40.dp),
                 fontWeight = FontWeight.Bold,
                 style = TextStyle(
-                    fontSize = 30.sp
+                    fontSize = 44.sp
                 )
             )
+            Text(
+                text = "Cuff Exercises",
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(vertical = 8.dp),
+                fontWeight = FontWeight.Bold,
+                style = TextStyle(
+                    fontSize = 44.sp, // Font size for the second part
+                    textAlign = TextAlign.Center // Centers the text within its composable
+                )
+            )
+            Spacer(modifier = Modifier.height(100.dp))
+            // LazyColumn for the list of exercises
             NamesLazyColumn()
         }
     }
 }
 
-        @Composable
-        fun NamesLazyColumn() {
+@Composable
+fun NamesLazyColumn() {
 
-            val exerciseList = listOf(
-                "Pendulum",
-                "Posterior Stretching",
-                "Up-the-back Stretch",
-                "Overhead Stretch",
-                "Shoulder Flexor",
-                "Shoulder Rotation",
-                "Wall Climber-Side",
-                "Wall Climber-Front",
-                "Shoulder Blade Squeeze",
-                "Arm Reach- Front",
-                "Arm Reach-Side",
-                "Arm Raise-Side",
-                "Shoulder Flexor and Extensor",
-                "Wall Push-Up",
-                "Scapular Retraction",
-                "Internal Rotator",
-                "External Rotator"
-            )
+    val exerciseList = listOf(
+        "Pendulum",
+        "Posterior Stretching",
+        "Up-the-back Stretch",
+        "Overhead Stretch",
+        "Shoulder Flexor",
+        "Shoulder Rotation",
+        "Wall Climber-Side",
+        "Wall Climber-Front",
+        "Shoulder Blade Squeeze",
+        "Arm Reach- Front",
+        "Arm Reach-Side",
+        "Arm Raise-Side",
+        "Shoulder Flexor and Extensor",
+        "Wall Push-Up",
+        "Scapular Retraction",
+        "Internal Rotator",
+        "External Rotator"
+    )
 
-            LazyColumn(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalAlignment = Alignment.CenterHorizontally
+    LazyColumn(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        items(items = exerciseList) { name ->
+            Button(
+                onClick = { /* TODO: handle button click */ },
+                modifier = Modifier
+                    .padding(12.dp) // Adjust padding as needed
             ) {
-                items(items = exerciseList) { name ->
-                    Text(
-                        text = name,
-                        modifier = Modifier.padding(26.dp)
-                    )
-                }
+                Text(
+                    text = name,
+                    modifier = Modifier.padding(8.dp),
+                    style = TextStyle(
+                        fontSize = 24.sp),
+                    textAlign = TextAlign.Center
+                )
             }
         }
+    }
+}
 
-        @Preview(showBackground = true)
-        @Composable
-        fun PreviewExerciseScreen() {
-            ExercisesScreen()
-        }
+    @Preview(showBackground = true)
+    @Composable
+    fun PreviewExerciseScreen() {
+        ExercisesScreen()
+    }
+
 
 
 
