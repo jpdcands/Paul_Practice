@@ -68,7 +68,7 @@ fun ExercisesScreen() {
                     textAlign = TextAlign.Center // Centers the text within its composable
                 )
             )
-            Spacer(modifier = Modifier.height(100.dp))
+            Spacer(modifier = Modifier.height(40.dp))
             // LazyColumn for the list of exercises
             NamesLazyColumn()
         }
@@ -76,7 +76,6 @@ fun ExercisesScreen() {
 }
 @Composable
 fun NamesLazyColumn() {
-
     val exerciseList = listOf(
         "Pendulum",
         "Posterior Stretching",
