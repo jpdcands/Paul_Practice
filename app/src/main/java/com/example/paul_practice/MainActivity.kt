@@ -15,22 +15,23 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.material3.Text
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            //  NamesLazyColumn()
             ExercisesScreen()
         }
     }
@@ -38,7 +39,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ExercisesScreen() {
-    // Enclose everything in a Box
     Box(
         contentAlignment = Alignment.Center, // Aligns the content to the center
         modifier = Modifier.fillMaxSize()    // Fills the entire screen
@@ -74,7 +74,6 @@ fun ExercisesScreen() {
         }
     }
 }
-
 @Composable
 fun NamesLazyColumn() {
 
@@ -104,7 +103,7 @@ fun NamesLazyColumn() {
     ) {
         items(items = exerciseList) { name ->
             Button(
-                onClick = { /* TODO: handle button click */ },
+                onClick = { /*TODO*/ },
                 modifier = Modifier
                     .padding(12.dp) // Adjust padding as needed
             ) {
@@ -119,8 +118,7 @@ fun NamesLazyColumn() {
         }
     }
 }
-
-    @Preview(showBackground = true)
+   @Preview(showBackground = true)
     @Composable
     fun PreviewExerciseScreen() {
         ExercisesScreen()
