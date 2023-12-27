@@ -14,7 +14,11 @@ import androidx.navigation.NavHostController
 import com.example.paul_practice.NavRoutes
 
 @Composable
+<<<<<<< HEAD
 fun Pendulum(navController: NavHostController) {
+=======
+fun Pendulum(navHostController: NavHostController) {
+>>>>>>> origin/master
     Box(
         modifier = Modifier
             .fillMaxSize(),
