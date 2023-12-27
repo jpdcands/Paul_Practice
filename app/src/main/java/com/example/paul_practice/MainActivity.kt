@@ -32,13 +32,14 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ExercisesScreen()
+            val navController = rememberNavController()
+            ExercisesScreen(navController)
         }
     }
 }
 
 @Composable
-fun ExercisesScreen() {
+fun ExercisesScreen(navController: NavController) {
     Box(
         contentAlignment = Alignment.Center, // Aligns the content to the center
         modifier = Modifier.fillMaxSize()    // Fills the entire screen
@@ -70,12 +71,12 @@ fun ExercisesScreen() {
             )
             Spacer(modifier = Modifier.height(100.dp))
             // LazyColumn for the list of exercises
-            NamesLazyColumn()
+            NamesLazyColumn(navController)
         }
     }
 }
 @Composable
-fun NamesLazyColumn() {
+fun NamesLazyColumn(navController: NavController) {
 
     val exerciseList = listOf(
         "Pendulum",
@@ -103,7 +104,11 @@ fun NamesLazyColumn() {
     ) {
         items(items = exerciseList) { name ->
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                    if (name == "Pendulum") {
+                        navController.navigate("Pendulum")
+                    }
+                },
                 modifier = Modifier
                     .padding(12.dp) // Adjust padding as needed
             ) {
@@ -118,11 +123,11 @@ fun NamesLazyColumn() {
         }
     }
 }
-   @Preview(showBackground = true)
+/*   @Preview(showBackground = true)
     @Composable
     fun PreviewExerciseScreen() {
-        ExercisesScreen()
-    }
+        ExercisesScreen(navController)
+    } */
 
 
 

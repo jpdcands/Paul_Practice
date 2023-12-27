@@ -9,16 +9,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 
 import com.example.paul_practice.NavRoutes
 
 @Composable
-<<<<<<< HEAD
-fun Pendulum(navController: NavHostController) {
-=======
 fun Pendulum(navHostController: NavHostController) {
->>>>>>> origin/master
     Box(
         modifier = Modifier
             .fillMaxSize(),
