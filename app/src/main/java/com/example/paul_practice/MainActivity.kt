@@ -33,92 +33,102 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            ExercisesScreen(navController)
+            NavHost(navController = navController, startDestination = "exercisesScreen") {
+                composable("exercisesScreen") {
+                    ExercisesScreen(navController)
+                }
+                composable("Pendulum") {
+                    // Pendulum screen composable goes here
+                }
+                // Define other destinations as needed
+            }
         }
     }
-}
 
-@Composable
-fun ExercisesScreen(navController: NavController) {
-    Box(
-        contentAlignment = Alignment.Center, // Aligns the content to the center
-        modifier = Modifier.fillMaxSize()    // Fills the entire screen
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.fillMaxWidth()
+    @Composable
+    fun ExercisesScreen(navController: NavController) {
+        Box(
+            contentAlignment = Alignment.Center, // Aligns the content to the center
+            modifier = Modifier.fillMaxSize()    // Fills the entire screen
         ) {
-            Text(
-                text = "Shoulder/Rotator",
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(top = 40.dp),
-                fontWeight = FontWeight.Bold,
-                style = TextStyle(
-                    fontSize = 44.sp
-                )
-            )
-            Text(
-                text = "Cuff Exercises",
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(vertical = 8.dp),
-                fontWeight = FontWeight.Bold,
-                style = TextStyle(
-                    fontSize = 44.sp, // Font size for the second part
-                    textAlign = TextAlign.Center // Centers the text within its composable
-                )
-            )
-            Spacer(modifier = Modifier.height(100.dp))
-            // LazyColumn for the list of exercises
-            NamesLazyColumn(navController)
-        }
-    }
-}
-@Composable
-fun NamesLazyColumn(navController: NavController) {
-
-    val exerciseList = listOf(
-        "Pendulum",
-        "Posterior Stretching",
-        "Up-the-back Stretch",
-        "Overhead Stretch",
-        "Shoulder Flexor",
-        "Shoulder Rotation",
-        "Wall Climber-Side",
-        "Wall Climber-Front",
-        "Shoulder Blade Squeeze",
-        "Arm Reach- Front",
-        "Arm Reach-Side",
-        "Arm Raise-Side",
-        "Shoulder Flexor and Extensor",
-        "Wall Push-Up",
-        "Scapular Retraction",
-        "Internal Rotator",
-        "External Rotator"
-    )
-
-    LazyColumn(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        items(items = exerciseList) { name ->
-            Button(
-                onClick = {
-                    if (name == "Pendulum") {
-                        navController.navigate("Pendulum")
-                    }
-                },
-                modifier = Modifier
-                    .padding(12.dp) // Adjust padding as needed
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = name,
-                    modifier = Modifier.padding(8.dp),
+                    text = "Shoulder/Rotator",
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(top = 40.dp),
+                    fontWeight = FontWeight.Bold,
                     style = TextStyle(
-                        fontSize = 24.sp),
-                    textAlign = TextAlign.Center
+                        fontSize = 44.sp
+                    )
                 )
+                Text(
+                    text = "Cuff Exercises",
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(vertical = 8.dp),
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyle(
+                        fontSize = 44.sp, // Font size for the second part
+                        textAlign = TextAlign.Center // Centers the text within its composable
+                    )
+                )
+                Spacer(modifier = Modifier.height(100.dp))
+                // LazyColumn for the list of exercises
+                NamesLazyColumn(navController)
+            }
+        }
+    }
+
+    @Composable
+    fun NamesLazyColumn(navController: NavController) {
+
+        val exerciseList = listOf(
+            "Pendulum",
+            "Posterior Stretching",
+            "Up-the-back Stretch",
+            "Overhead Stretch",
+            "Shoulder Flexor",
+            "Shoulder Rotation",
+            "Wall Climber-Side",
+            "Wall Climber-Front",
+            "Shoulder Blade Squeeze",
+            "Arm Reach- Front",
+            "Arm Reach-Side",
+            "Arm Raise-Side",
+            "Shoulder Flexor and Extensor",
+            "Wall Push-Up",
+            "Scapular Retraction",
+            "Internal Rotator",
+            "External Rotator"
+        )
+
+        LazyColumn(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            items(items = exerciseList) { name ->
+                Button(
+                    onClick = {
+                        if (name == "Pendulum") {
+                            navController.navigate("Pendulum")
+                        }
+                    },
+                    modifier = Modifier
+                        .padding(12.dp) // Adjust padding as needed
+                ) {
+                    Text(
+                        text = name,
+                        modifier = Modifier.padding(8.dp),
+                        style = TextStyle(
+                            fontSize = 24.sp
+                        ),
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         }
     }
